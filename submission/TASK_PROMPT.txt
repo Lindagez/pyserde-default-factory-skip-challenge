@@ -1,0 +1,7 @@
+Please fix `skip_if_default` for dataclass fields that use `default_factory`.
+
+When the option is enabled on a field or its class, pyserde should omit that field from serialized output when its value matches the default produced by its factory. It should work the same way as it does for a regular field default. Cover `to_dict`, `to_tuple`, JSON, YAML, TOML, msgpack, and pickle, including nested dataclasses and supported containers.
+
+The factory must not run while pyserde is decorating the class or building its serializer. Call it only when a value needs to be compared, and no more than once for that field in a serialized object. Don't mutate or reuse the value it returns. If a field is missing during deserialization, normal dataclass default behavior should still apply, including creating a fresh value for each instance.
+
+Keep existing behavior for regular defaults, non-default values, and `skip_if`, `skip_if_false`, and `skip_if_none`. Add regression tests for the class-level and field-level options, mutable defaults, custom factories, nested values, and the supported formats.
