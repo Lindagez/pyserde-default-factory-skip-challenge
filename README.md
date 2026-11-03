@@ -1,0 +1,1 @@
+# pyserde-default-factory-skip-challenge
