@@ -1,0 +1,2 @@
+Upstream repository: https://github.com/yukinarit/pyserde
+Base commit: 13926a6d983ef124ff4471bf655fb803eb238b21
